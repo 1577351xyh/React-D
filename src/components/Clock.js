@@ -30,7 +30,7 @@ import { useState, useEffect } from "react";
 //   }
 // }
 
-function Clock() {
+export default function Clock() {
   const [date, setDate] = useState(new Date())
   // useEffect编写异步操作代码(副作用代码)
   //参数2传递空数组,使我们的函数就执行一次
@@ -44,5 +44,3 @@ function Clock() {
 
   return <div>{date.toLocaleTimeString()}</div>
 }
-
-export default Clock
