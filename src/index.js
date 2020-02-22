@@ -3,6 +3,7 @@ import ReactDom from 'react-dom'
 import App from './App'
 import store from './store/store'
 import { Provider } from 'react-redux'
+import './style.css'
 
 
 //跨平台,把操作编程虚拟dom

@@ -1,10 +1,11 @@
 import React from 'react'
 //组件要以大写字母开头
-import RouterTest from './components/RouterTest'
+
+import Header from './common/header/index'
 export default function App() {
   return (
     <div>
-      <RouterTest />
+      <Header />
     </div>
   )
 }
