@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 
 /**
  * createStore 构造函数
@@ -8,11 +8,14 @@ import { createStore, applyMiddleware } from 'redux'
 
 import logger from "redux-logger";
 import thunk from "redux-thunk";
-import { counterReducer } from './counter'
+
+import haederReducer from '../common/header/store/'
 
 const store = createStore(
-  // combineReducers({ counter: counterReducer }),
-  counterReducer,
+  //模块化导入
+  combineReducers({ 
+    header: haederReducer 
+  }),
   applyMiddleware(logger, thunk)
 )
 export default store
