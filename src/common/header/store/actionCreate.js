@@ -31,3 +31,8 @@ export const searchFocis = () => ({
 export const searchblur = () => ({
   type: actionType.SEARCH_BLUR
 })
+
+export const pageChanges = (page) => ({
+  type: actionType.PAGE_CHANGE,
+  page
+})

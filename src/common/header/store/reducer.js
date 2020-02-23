@@ -22,18 +22,20 @@ const haederReducer = (state = defaultState, action) => {
       return state.set('focused', false)
 
     case actionType.SEARCH_LIST:
-      // return state.merge({
-      //   list: action.data,
-      //   totalPage: action.totalPage
-      // })
-      return state.set('list', action.data).set('totalPage', action.totalPage)
+      return state.merge({
+        list: action.data,
+        totalPage: action.totalPage
+      })
+    // return state.set('list', action.data).set('totalPage', action.totalPage)
     case actionType.MOUSE_LEAVE:
       console.log('MOUSE_LEAVE执行了')
       return state.set('mouse', false)
+
     case actionType.MOUSE_ENTER:
       return state.set('mouse', true)
 
-
+    case actionType.PAGE_CHANGE:
+      return state.set('page', action.page)
 
     default:
       return state

@@ -8,17 +8,20 @@ import { acitonCreate } from './store/'
 export class Header extends Component {
 
   list = () => {
-    const { focused, list, page, mouse, totalPage } = this.props;
+    const { focused, list, page, mouse, totalPage, onMouseEnter, onMouseLeave, pageChange } = this.props;
 
     const newList = list.toJS()
+    console.log(newList)
     const pageList = []
-    
+
     if (newList.length !== 0) {
-      for (let i = (page - 1); i < page * 10; i++) {
+      for (let i = (page - 1)*10; i < page * 10; i++) {
         pageList.push(
           <div className={style.listItem} key={newList[i]}>{newList[i]}</div>
         )
       }
+
+      console.log(pageList)
     }
 
     console.log('渲染了')
@@ -26,13 +29,13 @@ export class Header extends Component {
       return (
         <div
           className={style.list}
-          onMouseEnter={this.props.onMouseEnter}
-          onMouseLeave={this.props.onMouseLeave}
-          >
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
 
           <div className={style.flex}>
             <span>热门搜索</span>
-            <span onClick={this.props.pageChange(page, totalPage)}>换一换</span>
+            <span onClick={() => pageChange(page, totalPage)}>换一换</span>
           </div>
 
           {pageList}
@@ -97,14 +100,14 @@ const mapDispathToProps = (dispatch) => {
       dispatch(acitonCreate.onMouseEnter())
     },
     onMouseLeave() {
-      console.log('leave')
+      console.log('冒泡')
       dispatch(acitonCreate.onMouseLeave())
     },
     pageChange(page, totalPage) {
       if (page < totalPage) {
-        dispatch(acitonCreate.onMouseLeave(page + 1))
+        dispatch(acitonCreate.pageChanges(page + 1))
       } else {
-        dispatch(acitonCreate.onMouseLeave(1))
+        dispatch(acitonCreate.pageChanges(1))
       }
     }
   }
