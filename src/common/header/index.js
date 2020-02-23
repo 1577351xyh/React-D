@@ -3,17 +3,52 @@ import style from './style.module.css'
 import logo from '../../statics/logo1.png'
 import Icon from '../icon/index'
 import { connect } from 'react-redux'
-import {acitonCreate} from './store/'
+import { acitonCreate } from './store/'
 
 export class Header extends Component {
+
+  list = () => {
+    const { focused, list, page, mouse, totalPage } = this.props;
+
+    const newList = list.toJS()
+    const pageList = []
+    
+    if (newList.length !== 0) {
+      for (let i = (page - 1); i < page * 10; i++) {
+        pageList.push(
+          <div className={style.listItem} key={newList[i]}>{newList[i]}</div>
+        )
+      }
+    }
+
+    console.log('渲染了')
+    if (focused || mouse) {
+      return (
+        <div
+          className={style.list}
+          onMouseEnter={this.props.onMouseEnter}
+          onMouseLeave={this.props.onMouseLeave}
+          >
+
+          <div className={style.flex}>
+            <span>热门搜索</span>
+            <span onClick={this.props.pageChange(page, totalPage)}>换一换</span>
+          </div>
+
+          {pageList}
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <div className={style.header}>
-
         <a href="/">
           <img src={logo} alt="" className={style.logo} />
         </a>
-
         <div className={style.nav}>
           <div className={style.left}>首页</div>
           <div className={style.left}>下载App</div>
@@ -22,8 +57,9 @@ export class Header extends Component {
               onFocus={this.props.handFocus}
               onBlur={this.props.handBlur}
               className={this.props.focused ? style.active : ''}
-              />
+            />
             <Icon name="ren" />
+            {this.list()}
           </div>
           <div className={style.right}>Aa</div>
           <div className={style.right}>...</div>
@@ -40,17 +76,38 @@ export class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     //把redux中的focused 印射到组件的focused
-    focused: state.header.focused
+    focused: state.get('header').get('focused'),
+    list: state.get('header').get('list'),
+    mouse: state.get('header').get('mouse'),
+    page: state.get('header').get('page'),
+    totalPage: state.get('header').get('totalPage')
+    // focused: state.getIn(['header','focused'])
   }
 }
 const mapDispathToProps = (dispatch) => {
   return {
     handFocus() {
+      dispatch(acitonCreate.searchList())
       dispatch(acitonCreate.searchFocis())
     },
     handBlur() {
       dispatch(acitonCreate.searchblur())
+    },
+    onMouseEnter() {
+      dispatch(acitonCreate.onMouseEnter())
+    },
+    onMouseLeave() {
+      console.log('leave')
+      dispatch(acitonCreate.onMouseLeave())
+    },
+    pageChange(page, totalPage) {
+      if (page < totalPage) {
+        dispatch(acitonCreate.onMouseLeave(page + 1))
+      } else {
+        dispatch(acitonCreate.onMouseLeave(1))
+      }
     }
   }
 }
+
 export default connect(mapStateToProps, mapDispathToProps)(Header)

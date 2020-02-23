@@ -22,6 +22,7 @@
 }
 .right {
   float: right;
+  position: relative;
 }
 .left,
 .right {
@@ -38,4 +39,25 @@
 }
 .active{
   width: 200px;
+}
+.list{
+  position: absolute;
+  top: 100%;
+  width: 200px;
+  padding: 15px;
+  border: 1px solid #eee;
+}
+.list .listItem{
+  padding: 0 5px;
+  border: 1px solid #eee;
+  font-size: 12px;
+  margin: 5px;
+  display: inline-block;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+.flex span{
+  font: 12px;
 }
