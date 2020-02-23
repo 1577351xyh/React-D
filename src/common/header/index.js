@@ -3,7 +3,7 @@ import style from './style.module.css'
 import logo from '../../statics/logo1.png'
 import Icon from '../icon/index'
 import { connect } from 'react-redux'
-
+import {acitonCreate} from './store/'
 
 export class Header extends Component {
   render() {
@@ -46,12 +46,10 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
   return {
     handFocus() {
-      const action = {type: 'focus'}
-      dispatch(action)
+      dispatch(acitonCreate.searchFocis())
     },
     handBlur() {
-      const action = {type: 'blur'}
-      dispatch(action)
+      dispatch(acitonCreate.searchblur())
     }
   }
 }

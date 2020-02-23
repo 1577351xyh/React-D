@@ -9,7 +9,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-import haederReducer from '../common/header/store/'
+import {haederReducer} from '../common/header/store/'
 
 const store = createStore(
   //模块化导入
