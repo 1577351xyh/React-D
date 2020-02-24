@@ -5,6 +5,8 @@ import Header from './common/header/index'
 // import store from './store/store'
 import { BrowserRouter, Route } from 'react-router-dom'
 
+import Home from './pages/home'
+import Detail from './pages/detail'
 
 export default function App() {
   return (
@@ -13,8 +15,8 @@ export default function App() {
       {/* 路由 */}
       <BrowserRouter>
         <div>
-          <Route exact path="/" render={() => <div>首页</div>}></Route>
-          <Route exact path="/detail" render={() => <div>详情页</div>}></Route>
+          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/detail" component={Detail}></Route>
         </div>
       </BrowserRouter>
     </div>

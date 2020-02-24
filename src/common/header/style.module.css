@@ -5,6 +5,8 @@
   padding: 0 15px;
   position: relative;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .nav {
   max-width: 915px;

@@ -10,12 +10,14 @@ import { combineReducers } from 'redux-immutable'
 import thunk from "redux-thunk";
 
 import { haederReducer } from '../common/header/store/'
+import { homeReducer } from '../pages/home/store'
 
 const store = createStore(
   //模块化导入
   combineReducers({
-    header: haederReducer
+    header: haederReducer,
+    home: homeReducer
   }),
-  applyMiddleware( thunk)
+  applyMiddleware(thunk)
 )
 export default store
