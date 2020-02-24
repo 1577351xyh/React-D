@@ -7,24 +7,18 @@ import { acitonCreate } from './store/'
 
 export class Header extends Component {
 
-  list = () => {
+  lists = () => {
     const { focused, list, page, mouse, totalPage, onMouseEnter, onMouseLeave, pageChange } = this.props;
-
     const newList = list.toJS()
-    console.log(newList)
     const pageList = []
 
     if (newList.length !== 0) {
-      for (let i = (page - 1)*10; i < page * 10; i++) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
         pageList.push(
           <div className={style.listItem} key={newList[i]}>{newList[i]}</div>
         )
       }
-
-      console.log(pageList)
     }
-
-    console.log('渲染了')
     if (focused || mouse) {
       return (
         <div
@@ -57,12 +51,12 @@ export class Header extends Component {
           <div className={style.left}>下载App</div>
           <div className={style.left}>
             <input type="text"
-              onFocus={this.props.handFocus}
+              onFocus={()=>this.props.handFocus(this.props.list)}
               onBlur={this.props.handBlur}
               className={this.props.focused ? style.active : ''}
             />
             <Icon name="ren" />
-            {this.list()}
+            {this.lists()}
           </div>
           <div className={style.right}>Aa</div>
           <div className={style.right}>...</div>
@@ -89,8 +83,11 @@ const mapStateToProps = (state) => {
 }
 const mapDispathToProps = (dispatch) => {
   return {
-    handFocus() {
-      dispatch(acitonCreate.searchList())
+    handFocus(list) {
+      console.log(list)
+      if (list.size === 0) {
+        dispatch(acitonCreate.searchList())
+      }
       dispatch(acitonCreate.searchFocis())
     },
     handBlur() {
@@ -100,7 +97,6 @@ const mapDispathToProps = (dispatch) => {
       dispatch(acitonCreate.onMouseEnter())
     },
     onMouseLeave() {
-      console.log('冒泡')
       dispatch(acitonCreate.onMouseLeave())
     },
     pageChange(page, totalPage) {
