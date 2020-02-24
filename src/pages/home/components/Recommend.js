@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react'
 import style from '../index.module.css'
 import { connect } from 'react-redux'
 import {acitonCreate} from '../store'
+import {Link} from 'react-router-dom'
 
 export class Recommend extends PureComponent {
 
@@ -14,13 +15,13 @@ export class Recommend extends PureComponent {
         {
           articleList.map((item) => {
             return (
-              <div className={style.flex} key={item.get('id')}>
+              <Link to={`/detail/${item.get('id')}`} className={style.flex} key={item.get('id')}>
                 <img src={item.get('imgUrl')} alt="" />
                 <div>
                   <div>{item.get('title')}</div>
                   <div>{item.get('desc')}</div>
                 </div>
-              </div>
+              </Link>
             )
           })
         }

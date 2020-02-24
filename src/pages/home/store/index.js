@@ -1,5 +1,5 @@
-import homeReducer from './reducer'
+import Reducer from './reducer'
 import * as acitonCreate from './actionCreate'
 import * as actionType from './const'
 
-export { homeReducer, acitonCreate, actionType }
+export { Reducer, acitonCreate, actionType }

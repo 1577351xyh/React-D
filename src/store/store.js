@@ -9,14 +9,16 @@ import { combineReducers } from 'redux-immutable'
 // import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-import { haederReducer } from '../common/header/store/'
-import { homeReducer } from '../pages/home/store'
+import { Reducer as haederReducer } from '../common/header/store/'
+import { Reducer as homeReducer } from '../pages/home/store'
+import { Reducer as detailReducer } from '../pages/detail/store'
 
 const store = createStore(
   //模块化导入
   combineReducers({
     header: haederReducer,
-    home: homeReducer
+    home: homeReducer,
+    detail:detailReducer
   }),
   applyMiddleware(thunk)
 )
