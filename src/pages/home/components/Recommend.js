@@ -1,11 +1,11 @@
 
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import style from '../index.module.css'
 import { connect } from 'react-redux'
 import {acitonCreate} from '../store'
 
-export class Recommend extends Component {
+export class Recommend extends PureComponent {
 
   render() {
     const { articleList } = this.props;

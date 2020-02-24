@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-export class Topic extends Component {
+export class Topic extends PureComponent {
   render() {
     return (
       <div>

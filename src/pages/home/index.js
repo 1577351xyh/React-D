@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import List from './components/List'
 import Topic from './components/Topic'
 import Recommend from './components/Recommend'
@@ -8,7 +8,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { acitonCreate } from './store'
 
-export class Home extends Component {
+export class Home extends PureComponent {
 
   componentDidMount() {
     this.props.getTopicList()
