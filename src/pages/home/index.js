@@ -6,18 +6,13 @@ import Writer from './components/Writer'
 import style from './index.module.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import { acitonCreate } from './store'
+
 export class Home extends Component {
 
-
-  componentDidMount = async () => {
-    let res = await axios.get('/api/home.json')
-    const action = {
-      type: 'HOME_TOPIC',
-      data: res.data.data
-    }
-    this.props.getTopicList(action)
-  };
-
+  componentDidMount() {
+    this.props.getTopicList()
+  }
   render() {
     return (
       < div className={style.homeWarrper} >
@@ -37,7 +32,7 @@ export class Home extends Component {
 const mapDispathToProps = (dispatch) => {
   return {
     getTopicList(action) {
-      dispatch(action)
+      dispatch(acitonCreate.searchList())
     },
   }
 }

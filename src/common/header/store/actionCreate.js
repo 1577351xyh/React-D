@@ -13,7 +13,6 @@ export const searchList = () => {
   return (dispatch) => {
     axios.get('/api/headerList.json').then(res => {
       dispatch(searchGetList(res.data.data))
-      console.log('axios执行了')
     })
   }
 }
