@@ -24,9 +24,9 @@ export class Home extends Component {
         <div className={style.left}>
           <Topic />
           <List />
+          <Recommend />
         </div>
         <div className={style.right}>
-          <Recommend />
           <Writer />
         </div>
       </div >

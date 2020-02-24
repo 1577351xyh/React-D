@@ -13,7 +13,7 @@ const homeReducer = (state = defaultState, action) => {
     //immutable的set方法会把之前的值和设置的值,返回一个全新的对象
     case 'HOME_TOPIC':
       return state.merge({
-        TopicList: fromJS(action.data.TopicList),
+        TopicList: fromJS(action.data.topicList),
         articleList: fromJS(action.data.articleList),
         recommendList: fromJS(action.data.recommendList)
       })
