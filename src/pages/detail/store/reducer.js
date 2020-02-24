@@ -9,7 +9,6 @@ const defaultState = fromJS({
 
 //接收初始值和状态
 const homeReducer = (state = defaultState, action) => {
-  console.log(action.data)
   switch (action.type) {
     //immutable的set方法会把之前的值和设置的值,返回一个全新的对象
     case actionType.HOME_INFO:

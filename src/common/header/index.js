@@ -4,6 +4,7 @@ import logo from '../../statics/logo1.png'
 import Icon from '../icon/index'
 import { connect } from 'react-redux'
 import { acitonCreate } from './store/'
+import {Link} from 'react-router-dom'
 
 export class Header extends Component {
 
@@ -60,7 +61,7 @@ export class Header extends Component {
           </div>
           <div className={style.right}>Aa</div>
           <div className={style.right}>...</div>
-          <div className={style.right}>登录</div>
+          <Link to="/login" className={style.right}>登录</Link>
           <div className={style.right}>注册</div>
         </div>
 

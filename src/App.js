@@ -7,15 +7,17 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import Detail from './pages/detail'
+import Login from './pages/login'
 
 export default function App() {
   return (
     <div>
-      <Header />
       {/* 路由 */}
       <BrowserRouter>
         <div>
+          <Header />
           <Route exact path="/" component={Home}></Route>
+          <Login exact path="/login" />
           <Route exact path="/detail/:id" component={Detail}></Route>
         </div>
       </BrowserRouter>
