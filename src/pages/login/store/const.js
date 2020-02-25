@@ -1,0 +1,1 @@
+export const LOGIN_TOKEN = 'login/LOGIN_TOKEN'

@@ -12,13 +12,15 @@ import thunk from "redux-thunk";
 import { Reducer as haederReducer } from '../common/header/store/'
 import { Reducer as homeReducer } from '../pages/home/store'
 import { Reducer as detailReducer } from '../pages/detail/store'
+import { Reducer as loginReducer } from '../pages/login/store'
 
 const store = createStore(
   //模块化导入
   combineReducers({
     header: haederReducer,
     home: homeReducer,
-    detail:detailReducer
+    detail:detailReducer,
+    login:loginReducer
   }),
   applyMiddleware(thunk)
 )

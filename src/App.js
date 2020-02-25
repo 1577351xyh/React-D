@@ -17,7 +17,7 @@ export default function App() {
         <div>
           <Header />
           <Route exact path="/" component={Home}></Route>
-          <Login exact path="/login" />
+          <Route exact path="/login" component={Login}></Route>
           <Route exact path="/detail/:id" component={Detail}></Route>
         </div>
       </BrowserRouter>
