@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { acitonCreate } from './store'
+import { withRouter } from 'react-router-dom';
 export class Detail extends Component {
 
   componentDidMount() {
@@ -33,4 +34,4 @@ const mapDispathToProps = (dispatch) => {
     },
   }
 }
-export default connect(mapStateProps, mapDispathToProps)(Detail)
+export default connect(mapStateProps, mapDispathToProps)(withRouter(Detail))

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { acitonCreate } from './store'
 import { Redirect } from 'react-router-dom';
 
 
-export class Login extends Component {
+export class Login extends PureComponent {
 
   componentDidMount(){
     this.tokens = window.localStorage.getItem('token')
